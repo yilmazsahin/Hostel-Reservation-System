@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="483.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.EditItemsPages.EditReservationsServicesController">
+    <children>
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox layoutY="29.0" prefHeight="29.0" prefWidth="800.0" style="-fx-background-color: #aef1bc">
+            <children>
+                <Button fx:id="buttonRooms" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be" text="Rooms" />
+                <Button fx:id="buttonFeatures" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be" text="Features" />
+                <Button fx:id="buttonServices" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be" text="Services" />
+                <Button fx:id="buttonCustomers" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: transparent; -fx-border-color: #4993be" text="Customers" />
+                <Button fx:id="buttonAllReservations" alignment="TOP_LEFT" layoutX="385.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: transparent; -fx-border-color: #4993be" text="All Reservations" />
+                <Button fx:id="reservationsServicesButton" alignment="TOP_LEFT" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" style="-fx-background-color: #FF4B4B; -fx-border-color: #4993be;" text="Reservations Services" />
+            </children>
+
+        </HBox>
+        <Label layoutX="14.0" layoutY="89.0" prefHeight="17.0" prefWidth="187.0" text="Edit Reservations Services">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+        </Label>
+        <Button fx:id="buttonNewReservationsServices" layoutX="16.0" layoutY="429.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="171.0" style="-fx-background-color: #95f2d7" text="NEW RESERVATION SERVİCES">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonEditReservationsServices" layoutX="202.0" layoutY="429.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="184.0" style="-fx-background-color: #f08800" text="EDIT RESERVATIONS SERVICES">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonDeleteReservationsServices" layoutX="401.0" layoutY="429.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: #dc2f30" text="DELETE RESERVATIONS SERVICES">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="197.0" prefHeight="45.0" prefWidth="628.0" style="-fx-background-color: transparent">
+            <children>
+                <Label prefHeight="26.0" prefWidth="143.0" text="Service Name : " textOverrun="CLIP" />
+                <TextField fx:id="tf_serviceName" prefHeight="25.0" prefWidth="207.0" />
+                <ComboBox fx:id="serviceNameComboBox" prefHeight="25.0" prefWidth="256.0">
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </ComboBox>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="242.0" prefHeight="45.0" prefWidth="371.0" style="-fx-background-color: transparent">
+            <children>
+                <Label prefHeight="26.0" prefWidth="143.0" text="Quantity : " textOverrun="CLIP" />
+                <TextField fx:id="tf_quantity" prefHeight="25.0" prefWidth="207.0" />
+            </children>
+        </HBox>
+        <Button layoutX="439.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleEditReservationsServicesButtonClick" prefHeight="25.0" prefWidth="82.0" text="EDIT" />
+        <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="140.0" prefHeight="45.0" prefWidth="628.0" style="-fx-background-color: transparent">
+            <children>
+                <Label prefHeight="26.0" prefWidth="143.0" text="Search By Reservation ID : " textOverrun="CLIP" />
+                <TextField fx:id="tf_reservationId" prefHeight="25.0" prefWidth="207.0" />
+                <ComboBox fx:id="reservationIdComboBox" prefHeight="25.0" prefWidth="256.0">
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </ComboBox>
+            </children>
+        </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="207.0" layoutY="75.0" prefHeight="45.0" prefWidth="522.0" style="-fx-background-color: transparent">
+         <children>
+            <Label prefHeight="26.0" prefWidth="184.0" text="Search By Reservation Service ID : " textOverrun="CLIP" />
+            <TextField fx:id="tf_searchReservationServiceById" prefHeight="25.0" prefWidth="162.0" />
+            <ComboBox fx:id="reservationServiceIdComboBox" prefHeight="25.0" prefWidth="167.0">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ComboBox>
+         </children>
+      </HBox>
+        <Button fx:id="accommodationInvoiceButton" layoutX="616.0" layoutY="429.0" mnemonicParsing="false" prefHeight="37.0" text="ACCOMMODATION INVOICE" />
+    </children>
+
+</AnchorPane>

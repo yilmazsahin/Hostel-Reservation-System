@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="531.0" prefWidth="878.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.ControllersPackage.RoomController">
+    <children>
+        <HBox prefHeight="29.0" prefWidth="878.0" style="-fx-background-color: #a5d8fc;">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox layoutY="29.0" prefHeight="29.0" prefWidth="878.0" style="-fx-background-color: #aef1bc;">
+            <children>
+                <Button fx:id="buttonRooms" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: #FF4B4B; -fx-border-color: #4993be;" text="Rooms" />
+                <Button fx:id="buttonFeatures" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Features" />
+                <Button fx:id="buttonServices" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Services" />
+                <Button fx:id="buttonCustomers" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Customers" />
+            <Button fx:id="buttonAllReservations" alignment="TOP_LEFT" layoutX="385.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="All Reservations" />
+            <Button fx:id="reservationsServicesButton" alignment="TOP_LEFT" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Reservations Services" />
+            </children>
+        </HBox>
+        <Label layoutX="51.0" layoutY="91.0" text="Rooms">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+        </Label>
+        <TableView fx:id="roomTableView" layoutX="51.0" layoutY="120.0" prefHeight="359.0" prefWidth="780.0">
+            <columns>
+                <TableColumn fx:id="columnId" prefWidth="55.0" text="ID" />
+                <TableColumn fx:id="columnRoomName" prefWidth="142.0" text="Room-Name" />
+                <TableColumn fx:id="columnCapacity" prefWidth="111.0" text="Capacity" />
+                <TableColumn fx:id="columnPrice" prefWidth="92.0" text="Price" />
+                <TableColumn fx:id="columnFeatures" prefWidth="174.0" text="Features" />
+            <TableColumn fx:id="columnTotalRooms" prefWidth="94.0" text="Total Rooms" />
+            <TableColumn fx:id="columnAvailableRooms" prefWidth="106.0" text="Available Rooms" />
+            </columns>
+        </TableView>
+        <Button fx:id="buttonNewRoom" layoutX="51.0" layoutY="487.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #95f2d7;" text="NEW ROOM">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font></Button>
+        <Button fx:id="buttonEditRoom" layoutX="190.0" layoutY="487.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #f08800;" text="EDIT ROOM">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonDeleteRoom" layoutX="332.0" layoutY="487.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #dc2f30;" text="DELETE ROOM">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+    </children>
+
+</AnchorPane>

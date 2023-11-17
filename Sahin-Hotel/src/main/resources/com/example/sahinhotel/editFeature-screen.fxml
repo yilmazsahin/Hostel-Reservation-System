@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="441.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.EditItemsPages.EditFeatureController">
+    <children>
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc;">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox layoutY="29.0" prefHeight="29.0" prefWidth="800.0" style="-fx-background-color: #aef1bc;">
+            <children>
+                <Button fx:id="buttonRooms" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Rooms" />
+                <Button fx:id="buttonFeatures" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: #FF4B4B; -fx-border-color: #4993be;" text="Features" />
+                <Button fx:id="buttonServices" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Services" />
+                <Button fx:id="buttonCustomers" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Customers" />
+                <Button fx:id="buttonAllReservations" alignment="TOP_LEFT" layoutX="385.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="All Reservations" />
+                <Button fx:id="reservationsServicesButton" alignment="TOP_LEFT" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="138.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Reservations Services" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="120.0" prefHeight="45.0" prefWidth="549.0" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="120.0">
+            <children>
+                <Label alignment="CENTER" prefHeight="28.0" prefWidth="166.0" text="Filter By Feature Search : " />
+                <TextField fx:id="editFeatureTextField" alignment="CENTER" prefHeight="25.0" prefWidth="149.0" />
+                <ComboBox fx:id="featuresComboBox" prefHeight="25.0" prefWidth="187.0">
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </ComboBox>
+
+            </children>
+        </HBox>
+        <Label layoutX="17.0" layoutY="92.0" text="Edit Feature">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+        </Label>
+        <Button fx:id="buttonSavingEdit" layoutX="368.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleEditFeatureButtonClick" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #5EFC8F;" text="Edit">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonEditFeature" layoutX="218.0" layoutY="376.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #f08800;" text="EDIT FEATURE">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonDeleteFeature" layoutX="393.0" layoutY="376.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #dc2f30;" text="DELETE FEATURE">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonNewFeature" layoutX="59.0" layoutY="376.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #95f2d7;" text="NEW FEATURE">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+      <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="165.0" prefHeight="45.0" prefWidth="549.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="28.0" prefWidth="166.0" text="Replace with that feature :" />
+            <TextField fx:id="newFeatureTextField" alignment="CENTER" prefHeight="25.0" prefWidth="214.0" />
+         </children>
+      </HBox>
+
+
+    </children>
+
+</AnchorPane>

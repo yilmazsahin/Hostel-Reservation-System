@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="544.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.ControllersPackage.ReservationsServicesController">
+    <children>
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox layoutY="29.0" prefHeight="29.0" prefWidth="800.0" style="-fx-background-color: #aef1bc">
+            <children>
+                <Button fx:id="buttonRooms" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Rooms" />
+                <Button fx:id="buttonFeatures" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Features" />
+                <Button fx:id="buttonServices" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Services" />
+                <Button fx:id="buttonCustomers" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: transparent; -fx-border-color: #4993be;" text="Customers" />
+                <Button fx:id="buttonAllReservations" alignment="TOP_LEFT" layoutX="385.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: transparent; -fx-border-color: #4993be;" text="All Reservations" />
+            </children>
+
+        </HBox>
+        <Label layoutX="51.0" layoutY="91.0" prefHeight="17.0" prefWidth="187.0" text="Reservations Services">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER_LEFT" layoutX="51.0" layoutY="120.0" prefHeight="45.0" prefWidth="467.0" style="-fx-background-color: #e6dcd7;">
+            <children>
+                <Label prefHeight="26.0" prefWidth="176.0" text="Searching by Service Name :  " textOverrun="CLIP">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></Label>
+                <TextField fx:id="tf_searchingReservationsServicesByServiceName" prefHeight="25.0" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin></TextField>
+            <Button mnemonicParsing="false" onAction="#handleSearchReservationServicesByServiceNameButtonClick" text="Search" />
+            </children>
+        </HBox>
+        <TableView fx:id="reservationsServicesTableView" layoutX="51.0" layoutY="174.0" prefHeight="305.0" prefWidth="734.0">
+            <columns>
+                <TableColumn fx:id="columnReservationServiceId" prefWidth="140.0" text="Reservation Service ID" />
+                <TableColumn fx:id="columnReservationId" minWidth="7.0" prefWidth="96.0" text="Reservation ID" />
+                <TableColumn fx:id="columnServiceId" prefWidth="72.0" text="Service ID" />
+                <TableColumn fx:id="columnServiceName" prefWidth="117.0" text="Service Name" />
+                <TableColumn fx:id="columnUnitPrice" prefWidth="89.0" text="Unit Price" />
+                <TableColumn fx:id="columnQuantity" prefWidth="90.0" text="Quantity" />
+            <TableColumn fx:id="columnTotalPrice" prefWidth="114.0" text="Total Price" />
+            </columns>
+        </TableView>
+        <Button fx:id="buttonNewReservationsServices" layoutX="14.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="152.0" style="-fx-background-color: #95f2d7;" text="New Reservations Services">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font></Button>
+        <Button fx:id="buttonEditReservationsServices" layoutX="178.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="152.0" style="-fx-background-color: #f08800;" text="Edit Reservations Services">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonDeleteReservationsServices" layoutX="346.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="163.0" style="-fx-background-color: #dc2f30;" text="Delete Reservations Services">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+      <Button fx:id="accommodationInvoiceButton" layoutX="563.0" layoutY="495.0" maxHeight="37.0" mnemonicParsing="false" prefHeight="37.0" text="Accomadation Invoice" />
+    </children>
+
+
+</AnchorPane>

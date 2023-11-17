@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="499.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.EditItemsPages.EditRoomController">
+    <children>
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc;">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox layoutY="29.0" prefHeight="29.0" prefWidth="800.0" style="-fx-background-color: #aef1bc;">
+            <children>
+                <Button fx:id="buttonRooms" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: #FF4B4B; -fx-border-color: #4993be;" text="Rooms" />
+                <Button fx:id="buttonFeatures" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Features" />
+                <Button fx:id="buttonServices" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Services" />
+                <Button fx:id="buttonCustomers" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Customers" />
+                <Button fx:id="buttonAllReservations" alignment="TOP_LEFT" layoutX="385.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="All Reservations" />
+                <Button fx:id="reservationsServicesButton" alignment="TOP_LEFT" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Reservations Services" />
+            </children>
+        </HBox>
+        <Label layoutX="44.0" layoutY="76.0" text="Edit Room">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+        </Label>
+
+        <Button fx:id="buttonNewRoom" layoutX="51.0" layoutY="450.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #95f2d7;" text="ADD NEW ROOM">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonEditRoom" layoutX="185.0" layoutY="450.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #f08800;" text="EDIT ROOM">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonDeleteRoom" layoutX="322.0" layoutY="450.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #dc2f30;" text="DELETE ROOM">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <HBox alignment="CENTER_LEFT" layoutX="22.0" layoutY="93.0" prefHeight="45.0" prefWidth="565.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="93.0">
+            <children>
+                <Label alignment="CENTER" prefHeight="28.0" prefWidth="122.0" text="Filter By Room Name" />
+                <Label alignment="CENTER" prefHeight="26.0" prefWidth="67.0" text="Search" />
+                <TextField fx:id="tf_searchingByRoomName" prefHeight="25.0" prefWidth="149.0" />
+                <ComboBox fx:id="roomNameComboBox" prefHeight="25.0" prefWidth="112.0">
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </ComboBox>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="20.0" layoutY="181.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="181.0">
+            <Label layoutX="26.0" layoutY="112.0" prefHeight="17.0" prefWidth="150.0" text="Room Name : " />
+            <TextField fx:id="roomNameTextField" layoutX="137.0" layoutY="108.0" prefHeight="25.0" prefWidth="162.0" />
+            <cursor>
+                <Cursor fx:constant="OPEN_HAND" />
+            </cursor>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="20.0" layoutY="219.0">
+            <children>
+                <Label prefHeight="17.0" prefWidth="150.0" text="Capacity : " />
+                <TextField fx:id="roomCapacityTextField" prefHeight="25.0" prefWidth="162.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="22.0" layoutY="305.0">
+            <children>
+                <Label layoutX="26.0" layoutY="112.0" prefHeight="17.0" prefWidth="150.0" text="Features : " />
+                <TextField fx:id="roomFeaturesTextField" layoutX="137.0" layoutY="108.0" prefHeight="25.0" prefWidth="162.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="20.0" layoutY="260.0">
+            <children>
+                <Label layoutX="26.0" layoutY="112.0" prefHeight="17.0" prefWidth="150.0" text="Price : " />
+                <TextField fx:id="roomPriceTextField" layoutX="137.0" layoutY="108.0" prefHeight="25.0" prefWidth="162.0" />
+            </children>
+        </HBox>
+        <Button layoutX="447.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleEditRoomButtonClick" text="Save Room" />
+      <HBox alignment="CENTER" layoutX="20.0" layoutY="342.0">
+         <children>
+            <Label layoutX="26.0" layoutY="112.0" prefHeight="17.0" prefWidth="150.0" text="Total Rooms : " />
+            <TextField fx:id="totalRoomsTextField" layoutX="137.0" layoutY="108.0" prefHeight="25.0" prefWidth="162.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="22.0" layoutY="387.0">
+         <children>
+            <Label layoutX="26.0" layoutY="112.0" prefHeight="17.0" prefWidth="150.0" text="Available Rooms : " />
+            <TextField fx:id="availableRoomsTextField" layoutX="137.0" layoutY="108.0" prefHeight="25.0" prefWidth="162.0" />
+         </children>
+      </HBox>
+    </children>
+
+</AnchorPane>

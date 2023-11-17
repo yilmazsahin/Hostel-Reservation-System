@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.EditItemsPages.EditCustomerController">
+    <children>
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc;">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox layoutY="29.0" prefHeight="29.0" prefWidth="800.0" style="-fx-background-color: #aef1bc;">
+            <children>
+                <Button fx:id="buttonRooms" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Rooms" />
+                <Button fx:id="buttonFeatures" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Features" />
+                <Button fx:id="buttonServices" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Services" />
+                <Button fx:id="buttonCustomers" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: #FF4B4B; -fx-border-color: #4993be;" text="Customers" />
+                <Button fx:id="buttonAllReservations" alignment="TOP_LEFT" layoutX="385.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: transparent; -fx-border-color: #4993be;" text="All Reservations" />
+                <Button fx:id="reservationsServicesButton" alignment="TOP_LEFT" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" style="-fx-background-color: transparent; -fx-border-color: #4993be;" text="Reservations Services" />
+            </children>
+
+        </HBox>
+        <Label layoutX="51.0" layoutY="91.0" text="Edit Customer">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER_LEFT" layoutX="197.0" layoutY="77.0" prefHeight="45.0" prefWidth="570.0" style="-fx-background-color: transparent;">
+            <children>
+                <Label prefHeight="26.0" prefWidth="127.0" text="Searching by Name :  " textOverrun="CLIP" />
+                <TextField fx:id="tf_searching" prefHeight="25.0" prefWidth="207.0" />
+                <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="235.0">
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </ComboBox>
+            </children>
+        </HBox>
+        <Button fx:id="buttonNewCustomer" layoutX="51.0" layoutY="458.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #95f2d7;" text="ADD NEW CUSTOMER">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonEditCustomer" layoutX="197.0" layoutY="458.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #f08800;" text="EDIT CUSTOMER">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonDeleteCustomer" layoutX="338.0" layoutY="458.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="125.0" style="-fx-background-color: #dc2f30;" text="DELETE CUSTOMER">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="158.0" prefHeight="37.0" prefWidth="423.0">
+            <children>
+                <Label prefHeight="17.0" prefWidth="122.0" text="Full Name : " />
+                <TextField fx:id="tf_customerFullName" prefHeight="25.0" prefWidth="225.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="350.0" prefHeight="37.0" prefWidth="423.0">
+            <children>
+                <Label prefHeight="17.0" prefWidth="122.0" text="Description : " />
+                <TextField fx:id="tf_customerDescription" prefHeight="25.0" prefWidth="296.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="201.0" prefHeight="37.0" prefWidth="423.0">
+            <children>
+                <Label prefHeight="17.0" prefWidth="122.0" text="Identity Number : " />
+                <TextField fx:id="tf_customerIdentityNumber" prefHeight="25.0" prefWidth="225.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="248.0" prefHeight="37.0" prefWidth="423.0">
+            <children>
+                <Label prefHeight="17.0" prefWidth="122.0" text="PhoneNumber : " />
+                <TextField fx:id="tf_customerPhoneNumber" prefHeight="25.0" prefWidth="225.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="296.0" prefHeight="37.0" prefWidth="423.0">
+            <children>
+                <Label prefHeight="17.0" prefWidth="122.0" text="Birth Date : " />
+                <DatePicker fx:id="dt_customerBirthDate" prefHeight="25.0" prefWidth="226.0" />
+            </children>
+        </HBox>
+        <Button layoutX="482.0" layoutY="399.0" mnemonicParsing="false" onAction="#handleEditCustomerButtonClick" text="Edit Customer" />
+    </children>
+
+</AnchorPane>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="542.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.ControllersPackage.MainController">
+   <children>
+      <HBox prefHeight="29.0" prefWidth="870.0" style="-fx-background-color: #a5d8fc;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox layoutY="29.0" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="870.0" style="-fx-background-color: #aef1bc;">
+         <children>
+            <Button fx:id="buttonRooms" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Rooms" />
+            <Button fx:id="buttonFeatures" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Features" />
+            <Button fx:id="buttonServices" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Services" />
+            <Button fx:id="buttonCustomers" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Customers" />
+            <Button fx:id="reservationsServicesButton" alignment="TOP_LEFT" layoutX="385.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="134.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Reservations Services" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="51.0" layoutY="68.0" prefHeight="45.0" prefWidth="734.0" style="-fx-background-color: #e6dcd7;">
+         <children>
+            <Label alignment="CENTER" prefHeight="28.0" prefWidth="72.0" text="Filter By" />
+            <Label prefHeight="29.0" prefWidth="44.0" text="From     " />
+            <DatePicker fx:id="filterDateFrom" layoutX="101.0" layoutY="50" prefHeight="23.0" prefWidth="122.0" style="-fx-background-color: transparent; -fx-border-color: black;" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="57.0" text="To" />
+            <DatePicker fx:id="filterDateTo" layoutX="100" layoutY="50" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: transparent; -fx-border-color: black;">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin></DatePicker>
+            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearchReservationsByDateButtonClick" prefHeight="30.0" text="Search">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+
+         </children>
+      </HBox>
+      <TableView fx:id="reservationsTableView" layoutX="51.0" layoutY="174.0" prefHeight="305.0" prefWidth="734.0">
+        <columns>
+          <TableColumn fx:id="columnId" prefWidth="41.0" text="ID" />
+          <TableColumn fx:id="columnRoom" prefWidth="79.0" text="Room" />
+            <TableColumn fx:id="columnCheckInDate" prefWidth="122.0" text="Check-In Date" />
+            <TableColumn fx:id="columnCheckOutDate" prefWidth="122.0" text="Check-Out Date" />
+            <TableColumn fx:id="columnCheckedIn" prefWidth="122.0" text="Checked-In " />
+            <TableColumn fx:id="columnCheckedOut" prefWidth="122.0" text="Checked-Out" />
+            <TableColumn fx:id="columnCustomers" prefWidth="125.0" text="Customer" />
+        </columns>
+      </TableView>
+      <Button fx:id="buttonReservation" layoutX="70.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #95f2d7;" text="NEW RESERVATION">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="10.0" />
+         </font></Button>
+      <Button fx:id="buttonEdit" layoutX="221.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #f08800;" text="EDIT RESERVATION">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonDelete" layoutX="366.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="134.0" style="-fx-background-color: #dc2f30;" text="DELETE RESERVATION">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="accommodationInvoiceButton" layoutX="526.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" text="ACCOMMODATION INVOICE" />
+      <HBox alignment="CENTER_LEFT" layoutX="51.0" layoutY="122.0" prefHeight="45.0" prefWidth="734.0" style="-fx-background-color: #e6dcd7;">
+         <children>
+            <Label alignment="CENTER" prefHeight="28.0" prefWidth="72.0" text="Filter By" />
+            <Label prefHeight="29.0" prefWidth="44.0" text="Name" />
+            <TextField fx:id="tf_searchByName" prefHeight="25.0" prefWidth="194.0">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="searchButtonByName" mnemonicParsing="false" onAction="#handleSearchReservationsByNameButtonClick" prefHeight="30.0" text="Search">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

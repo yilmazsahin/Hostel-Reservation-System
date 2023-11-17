@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="545.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.ControllersPackage.CustomerController">
+    <children>
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc;">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox layoutY="29.0" prefHeight="29.0" prefWidth="800.0" style="-fx-background-color: #aef1bc;">
+            <children>
+                <Button fx:id="buttonRooms" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Rooms" />
+                <Button fx:id="buttonFeatures" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Features" />
+                <Button fx:id="buttonServices" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Services" />
+                <Button fx:id="buttonCustomers" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: #FF4B4B; -fx-border-color: #4993be;" text="Customers" />
+            <Button fx:id="buttonAllReservations" alignment="TOP_LEFT" layoutX="385.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: transparent; -fx-border-color: #4993be;" text="All Reservations" />
+            <Button fx:id="reservationsServicesButton" alignment="TOP_LEFT" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" style="-fx-background-color: transparent; -fx-border-color: #4993be;" text="Reservations Services" />
+            </children>
+
+        </HBox>
+        <Label layoutX="51.0" layoutY="91.0" text="Customers">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER_LEFT" layoutX="51.0" layoutY="120.0" prefHeight="45.0" prefWidth="451.0" style="-fx-background-color: #e6dcd7;" AnchorPane.rightAnchor="299.0">
+            <children>
+                <Label prefHeight="26.0" prefWidth="143.0" text="Searching by Name: " textOverrun="CLIP" />
+                <TextField fx:id="tf_searchCustomersByName" prefHeight="25.0" prefWidth="207.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin></TextField>
+            <Button mnemonicParsing="false" onAction="#handleSearchCustomersByNameButtonClick" text="Search" />
+            </children>
+        </HBox>
+        <TableView fx:id="customersTableView" layoutX="51.0" layoutY="174.0" prefHeight="305.0" prefWidth="734.0">
+            <columns>
+                <TableColumn fx:id="columnId" prefWidth="41.0" text="ID" />
+                <TableColumn fx:id="fullName" prefWidth="126.0" text="Full-Name" />
+                <TableColumn fx:id="identityNumber" prefWidth="141.0" text="Identity-Number" />
+                <TableColumn fx:id="phoneNumber" prefWidth="141.0" text="Phone-Number" />
+                <TableColumn fx:id="birthDate" prefWidth="110.0" text="Birth-Date " />
+                <TableColumn fx:id="description" prefWidth="155.0" text="Description" />
+            </columns>
+        </TableView>
+        <Button fx:id="buttonNewCustomer" layoutX="51.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #95f2d7;" text="ADD NEW CUSTOMER">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font></Button>
+        <Button fx:id="buttonEditCustomer" layoutX="197.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #f08800;" text="EDIT CUSTOMER">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonDeleteCustomer" layoutX="338.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #dc2f30;" text="DELETE CUSTOMER">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="10.0" />
+            </font>
+        </Button>
+      <Button fx:id="accommodationInvoiceButton" layoutX="492.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" text="ACCOMMODATION INVOICE" />
+    </children>
+
+</AnchorPane>
