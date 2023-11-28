@@ -51,8 +51,7 @@ public class MainController implements Initializable {
     private Button accommodationInvoiceButton;
     @FXML
     private TextField tf_searchByName;
-    @FXML
-    private Button searchButtonByName;
+
 
     private ObservableList<Room> roomsList = FXCollections.observableArrayList();
     private ObservableList<Reservations> reservationsList = FXCollections.observableArrayList();
@@ -80,8 +79,7 @@ public class MainController implements Initializable {
     private Button buttonEdit;
     @FXML
     private Button buttonDelete;
-    @FXML
-    private Button searchButton;
+
 
     public Button getAccommodationInvoiceButton() {
         return accommodationInvoiceButton;
@@ -380,8 +378,8 @@ public class MainController implements Initializable {
             ObservableList<Reservations> observableFilteredReservations = FXCollections.observableArrayList(filteredReservations);
             reservationsTableView.setItems(observableFilteredReservations);
         } else {
-            DBUtils.showConfirmationAlert("Dikkat", "Doğru alanları girmediniz", "Bütün rezervasyonları görmektesiniz.");
-            System.out.println("Geçerli bir tarih aralığı seçilmedi.");
+            DBUtils.showConfirmationAlert("Attention", "You have not entered the correct fields", "You are viewing all reservations.");
+
         }
     }
 

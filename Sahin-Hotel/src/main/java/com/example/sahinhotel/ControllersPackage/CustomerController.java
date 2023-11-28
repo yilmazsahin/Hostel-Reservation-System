@@ -64,7 +64,6 @@ public class CustomerController implements Initializable {
     @FXML
     private Button accommodationInvoiceButton;
 
-
     public void initialize() {
         columnId.setCellValueFactory(new PropertyValueFactory<>("CustomerId"));
         fullName.setCellValueFactory(new PropertyValueFactory<>("FullName"));
@@ -95,6 +94,7 @@ public class CustomerController implements Initializable {
             ObservableList<Customers> observableCustomers = FXCollections.observableArrayList(customers);
             customersTableView.setItems(observableCustomers);
         } else {
+           DBUtils.showConfirmationAlert("","","There is no data ");
             System.out.println("An error occurred while retrieving customers from the databases.");
         }
     }
@@ -111,7 +111,7 @@ public class CustomerController implements Initializable {
     }
 
     private List<Customers> getCustomerListByName(String customerName) {
-        List<Customers> allCustomers = DBUtils.getAllCustomers();
+
         List<Customers> filteredCustomers = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y");
              PreparedStatement statement = connection.prepareStatement("Select*From customers WHERE FullName=?");) {

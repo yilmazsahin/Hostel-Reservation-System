@@ -25,8 +25,6 @@ public class CustomerPayments {
     public double getTotalServicePrice() {
         return totalServicePrice;
     }
-
-
     public double getTotalServiceWage() {
         return totalServiceWage;
     }

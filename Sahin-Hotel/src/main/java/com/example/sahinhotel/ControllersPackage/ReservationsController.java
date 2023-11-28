@@ -240,15 +240,8 @@ public class ReservationsController implements Initializable {
 
     }
 
-    public boolean validateDates() {
-        if (checkIn_Date.isAfter(Checked_Out) || Checked_In.isAfter(checkOut_Date)) {
-            System.out.println("Hatalı tarihler! Lütfen tarihleri kontrol edin.");
-            return false;
-        }
-        return true;
-    }
 
-    public boolean validateCheckInOutDates() {
+/*    public boolean validateCheckInOutDates() {
         if (Checked_In.isBefore(LocalDate.now()) && Checked_Out.isAfter(LocalDate.now())) {
             System.out.println("Hata: Müşteri otelden çıkış yapmamış!");
             return false;
@@ -314,7 +307,7 @@ public class ReservationsController implements Initializable {
             e.printStackTrace();
             System.out.println("Hata: Veritabanına erişim sırasında bir hata oluştu.");
         }
-    }
+    }*/
 
     public static void updateCheckedOutDate(int reservationId) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y")) {

@@ -40,23 +40,12 @@ public class DBUtils {
         }
     }
 
- /*   public static Room createRoom(int id, String roomName, int capacity, double price, List<String> features, int totalRooms, int availableRooms) {
-        try {
-            Class<?> roomClass = Class.forName("com.example.sahinhotel.RoomTypes." + roomName.replace(" ", ""));
-            Constructor<?> constructor = roomClass.getConstructor(int.class, String.class, int.class, double.class, List.class, int.class, int.class);
-            return (Room) constructor.newInstance(id, roomName, capacity, price, features, totalRooms, availableRooms);
-        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
-                 InvocationTargetException e) {
-            e.printStackTrace();
-            return new SingleRoom(id, roomName, capacity, price, features, totalRooms, availableRooms);
-        }
-    }*/
     public static Room createRoom(int id, String roomName, int capacity, double price, List<String> features, int totalRooms, int availableRooms) {
         try {
             Class<?> roomClass = Class.forName("com.example.sahinhotel.RoomTypes." + roomName.replace(" ", ""));
             Constructor<?> constructor = roomClass.getConstructor(int.class, String.class, int.class, double.class, List.class, int.class, int.class);
             Room room = (Room) constructor.newInstance(id, roomName, capacity, price, features, totalRooms, availableRooms);
-            room.setFeatures(features);  // Bu satırı ekledim.
+            room.setFeatures(features);
             return room;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
                  InvocationTargetException e) {
@@ -470,6 +459,16 @@ public class DBUtils {
             e.printStackTrace();
         }
         return features;
+    }
+    public static boolean validateDates(LocalDate checkInDate, LocalDate checkOutDate, LocalDate checkedInDate, LocalDate checkedOutDate) {
+        if (checkInDate == null || checkOutDate == null || checkedInDate == null || checkedOutDate == null) {
+            DBUtils.showErrorAlert("Error", "Missing Dates", "Please fill in all date fields.");
+            return false;
+        }
+        if (checkInDate.isAfter(checkedOutDate) || checkedInDate.isAfter(checkOutDate) || checkedOutDate.isBefore(checkInDate) || checkedOutDate.isBefore(checkedInDate)) {
+            return false;
+        }
+        return true;
     }
 }
 

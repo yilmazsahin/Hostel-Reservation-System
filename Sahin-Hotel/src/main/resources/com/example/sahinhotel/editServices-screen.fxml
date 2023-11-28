@@ -8,9 +8,9 @@
 
 <AnchorPane prefHeight="436.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.EditItemsPages.EditServicesController">
     <children>
-        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc;">
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #4f0184;">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="UPoD  HOTEL" textFill="WHITE">
                     <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                     </font>

@@ -8,9 +8,9 @@
 
 <AnchorPane prefHeight="456.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.EditItemsPages.EditReservationController">
     <children>
-        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc;">
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #4f0184;">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="UPoD  HOTEL" textFill="WHITE">
                     <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                     </font>
@@ -96,10 +96,10 @@
             <Label layoutX="25.0" layoutY="255.0" prefWidth="150.0" text="Checked-Out : " />
             <DatePicker fx:id="checkedOutPicker" prefWidth="161.0" />
         </HBox>
-        <HBox alignment="CENTER" layoutX="22.0" layoutY="286.0" prefHeight="25.0" prefWidth="362.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="300.0">
+        <HBox alignment="CENTER" layoutX="22.0" layoutY="286.0" prefHeight="25.0" prefWidth="521.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="300.0">
             <Label layoutX="22.0" layoutY="286.0" prefWidth="150.0" text="Customer ID : " />
             <TextField fx:id="customerNameTextField" layoutX="137.0" layoutY="185.0" prefWidth="161.0" />
-            <ComboBox fx:id="customersComboBox">
+            <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="207.0">
                 <cursor>
                     <Cursor fx:constant="OPEN_HAND" />
                 </cursor>

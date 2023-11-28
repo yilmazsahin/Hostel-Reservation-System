@@ -14,7 +14,6 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 
-
 public class NewReservationsServicesController implements Initializable {
     @FXML
     private Button buttonRooms;
@@ -41,7 +40,8 @@ public class NewReservationsServicesController implements Initializable {
     @FXML
     private TextField tf_quantity;
     @FXML
-    private ComboBox<String> serviceNameComboBox;    @FXML
+    private ComboBox<String> serviceNameComboBox;
+    @FXML
     private ComboBox<String> reservationIdComboBox;
 
     public void initialize() {
@@ -78,7 +78,6 @@ public class NewReservationsServicesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     @FXML
@@ -99,42 +98,43 @@ public class NewReservationsServicesController implements Initializable {
             DBUtils.showErrorAlert("Error", "Invalid Input", "Please enter valid numeric values.");
         }
     }
-private void createReservationsService(int reservationId, String serviceName, int quantity) {
-    int[] serviceInfo = getServiceIdAndServicePriceByName(serviceName);
-    int serviceId = serviceInfo[0];
-    double servicePrice = serviceInfo[1];
 
-    if (serviceId != -1) {
-        double unitPrice = servicePrice;
-        double totalPrice = unitPrice * quantity;
+    private void createReservationsService(int reservationId, String serviceName, int quantity) {
+        int[] serviceInfo = getServiceIdAndServicePriceByName(serviceName);
+        int serviceId = serviceInfo[0];
+        double servicePrice = serviceInfo[1];
 
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y")) {
-            String sql = "INSERT INTO reservations_services (ReservationId, ServiceId, ServiceName, UnitPrice, Quantity, TotalPrice) VALUES (?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, reservationId);
-                preparedStatement.setInt(2, serviceId);
-                preparedStatement.setString(3, serviceName);
-                preparedStatement.setDouble(4, unitPrice);
-                preparedStatement.setInt(5, quantity);
-                preparedStatement.setDouble(6, totalPrice);
+        if (serviceId != -1) {
+            double unitPrice = servicePrice;
+            double totalPrice = unitPrice * quantity;
 
-                int rowsAffected = preparedStatement.executeUpdate();
-                if (rowsAffected > 0) {
-                    System.out.println("Reservation service created successfully.");
-                    DBUtils.showSuccessAlert("Success", "Reservation service Created", "Reservation service has been successfully created.");
-                } else {
-                    System.out.println("Failed to create Reservation service.");
-                    DBUtils.showErrorAlert("Error", "Failed to Create Reservation service", "Failed to create the Reservation service.");
+            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y")) {
+                String sql = "INSERT INTO reservations_services (ReservationId, ServiceId, ServiceName, UnitPrice, Quantity, TotalPrice) VALUES (?, ?, ?, ?, ?, ?)";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setInt(1, reservationId);
+                    preparedStatement.setInt(2, serviceId);
+                    preparedStatement.setString(3, serviceName);
+                    preparedStatement.setDouble(4, unitPrice);
+                    preparedStatement.setInt(5, quantity);
+                    preparedStatement.setDouble(6, totalPrice);
+
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    if (rowsAffected > 0) {
+                        System.out.println("Reservation service created successfully.");
+                        DBUtils.showSuccessAlert("Success", "Reservation service Created", "Reservation service has been successfully created.");
+                    } else {
+                        System.out.println("Failed to create Reservation service.");
+                        DBUtils.showErrorAlert("Error", "Failed to Create Reservation service", "Failed to create the Reservation service.");
+                    }
                 }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                DBUtils.showErrorAlert("Error", "Failed to create Reservation services", "Failed to create the reservation service in the database");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            DBUtils.showErrorAlert("Error", "Failed to create Reservation services", "Failed to create the reservation service in the database");
+        } else {
+            System.out.println("ServiceId not found for ServiceName: " + serviceName);
         }
-    } else {
-        System.out.println("ServiceId not found for ServiceName: " + serviceName);
     }
-}
 
     private void populateServiceNames() {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y")) {
@@ -152,11 +152,13 @@ private void createReservationsService(int reservationId, String serviceName, in
             DBUtils.showErrorAlert("Error", "Database Error", "An error occurred while accessing the database.");
         }
     }
+
     private void clearFields() {
         tf_reservationId.clear();
         tf_serviceName.clear();
         tf_quantity.clear();
     }
+
     private int[] getServiceIdAndServicePriceByName(String serviceName) {
         int[] result = {-1, -1};
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y")) {

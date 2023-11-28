@@ -40,11 +40,11 @@ public class CustomerPaymentsController implements Initializable {
     @FXML
     private Button reservationsServicesButton;
     @FXML
-    private Button buttonNewCustomer;
+    private Button buttonReservation;
     @FXML
-    private Button buttonEditCustomer;
+    private Button buttonEdit;
     @FXML
-    private Button buttonDeleteCustomer;
+    private Button buttonDelete;
     @FXML
     private ComboBox<Integer> reservationIdComboBox;
     @FXML
@@ -75,23 +75,26 @@ public class CustomerPaymentsController implements Initializable {
         buttonFeatures.setOnAction(e -> ScreenManager.showFeaturesPage());
         buttonCustomers.setOnAction(e -> ScreenManager.showCustomersPage());
         buttonServices.setOnAction(e -> ScreenManager.showServicesPage());
-        buttonDeleteCustomer.setOnAction(e -> ScreenManager.showDeleteCustomerPage());
-        buttonEditCustomer.setOnAction(e -> ScreenManager.showEditCustomerPage());
-        buttonNewCustomer.setOnAction(e -> ScreenManager.showNewCustomerPage());
+
+        buttonDelete.setOnAction(e -> ScreenManager.showDeleteReservationPage());
+        buttonEdit.setOnAction(e -> ScreenManager.showEditPage());
+        buttonReservation.setOnAction(e -> ScreenManager.showNewReservationPage());
         buttonAllReservations.setOnAction(e -> ScreenManager.showAllReservations());
         reservationsServicesButton.setOnAction(e -> ScreenManager.showReservationsServicesPage());
         populateReservationIds();
         reservationIdComboBox.setOnAction(event -> calculateTotalAmount(reservationIdComboBox.getValue()));
         reservationIdComboBox.setOnAction(event -> setReservationDetailsFromDatabase());
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         model = new CustomerPayments();
         reservationIdComboBox.setOnAction(event -> calculateTotalAmount(reservationIdComboBox.getValue()));
         reservationIdComboBox.setOnAction(event -> setReservationDetailsFromDatabase());
     }
+
     public void calculateTotalAmount(int reservationId) {
-         reservationId = reservationIdComboBox.getValue();
+        reservationId = reservationIdComboBox.getValue();
         String serviceQuery = "SELECT ServiceName, UnitPrice, Quantity, TotalPrice FROM reservations_services WHERE ReservationId = ?";
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y");
              PreparedStatement serviceStatement = connection.prepareStatement(serviceQuery)) {
@@ -105,7 +108,8 @@ public class CustomerPaymentsController implements Initializable {
                     int quantity = serviceResult.getInt("Quantity");
                     double totalServicePrice = serviceResult.getDouble("TotalPrice");
                     model.setServiceName(serviceName);
-                    model.setUnitPrice(unitPrice);;
+                    model.setUnitPrice(unitPrice);
+                    ;
                     model.setQuantity(quantity);
                     model.setTotalServicePrice(totalServicePrice);
                     totalServiceWage += totalServicePrice;
@@ -133,14 +137,16 @@ public class CustomerPaymentsController implements Initializable {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            DBUtils.showErrorAlert("Error","Failed to get data ","Failed to get data from the database");
+            DBUtils.showErrorAlert("Error", "Failed to get data ", "Failed to get data from the database");
         }
         reservationIdComboBox.setItems(reservationIds);
     }
+
     private int calculateStayedDays(LocalDate checkedInDate, LocalDate checkedOutDate) {
         return (int) ChronoUnit.DAYS.between(checkedInDate, checkedOutDate);
 
     }
+
     private void setReservationDetailsFromDatabase() {
         int selectedReservationId = reservationIdComboBox.getValue();
         String reservationQuery = "SELECT r.*, c.FullName, rooms.Price " +

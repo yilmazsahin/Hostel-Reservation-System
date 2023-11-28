@@ -7,9 +7,9 @@
 
 <AnchorPane prefHeight="544.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.ControllersPackage.ReservationsServicesController">
     <children>
-        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc">
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #4f0184">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="UPoD  HOTEL" textFill="WHITE">
                     <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                     </font>
@@ -62,17 +62,17 @@
             <font>
                 <Font name="Arial Rounded MT Bold" size="10.0" />
             </font></Button>
-        <Button fx:id="buttonEditReservationsServices" layoutX="178.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="152.0" style="-fx-background-color: #f08800;" text="Edit Reservations Services">
+        <Button fx:id="buttonEditReservationsServices" layoutX="209.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="152.0" style="-fx-background-color: #f08800;" text="Edit Reservations Services">
             <font>
                 <Font name="Arial Rounded MT Bold" size="10.0" />
             </font>
         </Button>
-        <Button fx:id="buttonDeleteReservationsServices" layoutX="346.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="163.0" style="-fx-background-color: #dc2f30;" text="Delete Reservations Services">
+        <Button fx:id="buttonDeleteReservationsServices" layoutX="401.0" layoutY="495.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="163.0" style="-fx-background-color: #dc2f30;" text="Delete Reservations Services">
             <font>
                 <Font name="Arial Rounded MT Bold" size="10.0" />
             </font>
         </Button>
-      <Button fx:id="accommodationInvoiceButton" layoutX="563.0" layoutY="495.0" maxHeight="37.0" mnemonicParsing="false" prefHeight="37.0" text="Accomadation Invoice" />
+      <Button fx:id="accommodationInvoiceButton" layoutX="614.0" layoutY="495.0" maxHeight="37.0" mnemonicParsing="false" prefHeight="37.0" text="ACCOMMODATION INVOICE" />
     </children>
 
 

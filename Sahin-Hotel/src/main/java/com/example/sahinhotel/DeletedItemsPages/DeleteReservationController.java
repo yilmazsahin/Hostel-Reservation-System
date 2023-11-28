@@ -116,8 +116,6 @@ public class DeleteReservationController implements Initializable {
             }
         }
     }
-
-
     public Reservations getReservationByCustomerName(String customerName) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -266,7 +264,4 @@ public class DeleteReservationController implements Initializable {
         }
         return null;
     }
-
-
-
 }

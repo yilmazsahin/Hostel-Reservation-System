@@ -8,9 +8,9 @@
 
 <AnchorPane prefHeight="533.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.ControllersPackage.CustomerPaymentsController">
     <children>
-        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc;">
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #4f0184;">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="UPoD  HOTEL" textFill="WHITE">
                     <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                     </font>
@@ -22,7 +22,7 @@
                 <Button fx:id="buttonRooms" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Rooms" />
                 <Button fx:id="buttonFeatures" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Features" />
                 <Button fx:id="buttonServices" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="125.0" style="-fx-background-color: Transparent; -fx-border-color: #4993be;" text="Services" />
-                <Button fx:id="buttonCustomers" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: #FF4B4B; -fx-border-color: #4993be;" text="Customers" />
+                <Button fx:id="buttonCustomers" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: transparent; -fx-border-color: #4993be;" text="Customers" />
                 <Button fx:id="buttonAllReservations" alignment="TOP_LEFT" layoutX="385.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: transparent; -fx-border-color: #4993be;" text="All Reservations" />
                 <Button fx:id="reservationsServicesButton" alignment="TOP_LEFT" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" style="-fx-background-color: transparent; -fx-border-color: #4993be;" text="Reservations Services" />
             </children>
@@ -39,22 +39,22 @@
                 </ComboBox>
             </children>
         </HBox>
-        <Button fx:id="buttonNewCustomer" layoutX="51.0" layoutY="467.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #95f2d7;" text="ADD NEW CUSTOMER">
+        <Button fx:id="buttonReservation" layoutX="38.0" layoutY="467.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="153.0" style="-fx-background-color: #95f2d7;" text="ADD NEW RESERVATION">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="11.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonEdit" layoutX="230.0" layoutY="467.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="153.0" style="-fx-background-color: #f08800;" text="EDIT RESERVATION">
             <font>
                 <Font name="Arial Rounded MT Bold" size="10.0" />
             </font>
         </Button>
-        <Button fx:id="buttonEditCustomer" layoutX="198.0" layoutY="467.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #f08800;" text="EDIT CUSTOMER">
+        <Button fx:id="buttonDelete" layoutX="411.0" layoutY="467.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="153.0" style="-fx-background-color: #dc2f30;" text="DELETE RESERVATION">
             <font>
                 <Font name="Arial Rounded MT Bold" size="10.0" />
             </font>
         </Button>
-        <Button fx:id="buttonDeleteCustomer" layoutX="350.0" layoutY="467.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #dc2f30;" text="DELETE CUSTOMER">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="10.0" />
-            </font>
-        </Button>
-        <Button fx:id="accommodationInvoiceButton" layoutX="495.0" layoutY="467.0" mnemonicParsing="false" prefHeight="37.0" text="ACCOMMODATION INVOICE" />
+        <Button fx:id="accommodationInvoiceButton" layoutX="589.0" layoutY="467.0" mnemonicParsing="false" prefHeight="37.0" text="ACCOMMODATION INVOICE" />
 
         <GridPane alignment="center" hgap="10" layoutX="14.0" layoutY="132.0" prefHeight="300.0" prefWidth="772.0" vgap="10">
             <padding>

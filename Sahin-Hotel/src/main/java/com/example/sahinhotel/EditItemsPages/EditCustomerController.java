@@ -37,19 +37,14 @@ public class EditCustomerController implements Initializable {
     private Button buttonDeleteCustomer;
     @FXML
     private ComboBox<String> customersComboBox;
-
     @FXML
     private TextField tf_customerFullName;
-
     @FXML
     private TextField tf_customerIdentityNumber;
-
     @FXML
     private TextField tf_customerPhoneNumber;
-
     @FXML
     private DatePicker dt_customerBirthDate;
-
     @FXML
     private TextField tf_customerDescription;
 
@@ -79,7 +74,6 @@ public class EditCustomerController implements Initializable {
         String description = tf_customerDescription.getText();
         editCustomer(selectedCustomer, fullName, identityNumber, phoneNumber, birthDate, description);
     }
-
     private void editCustomer(String selectedCustomer, String fullName, String identityNumber, String phoneNumber, String birthDate, String description) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y")) {
             String sql = "UPDATE customers SET FullName=?, IdentityNumber=?, PhoneNumber=?, BirthDate=?, Description=? WHERE FullName=?";

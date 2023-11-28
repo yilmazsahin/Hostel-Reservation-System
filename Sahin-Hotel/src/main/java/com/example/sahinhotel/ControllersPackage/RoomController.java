@@ -65,7 +65,6 @@ public class RoomController implements Initializable {
         columnCapacity.setCellValueFactory(new PropertyValueFactory<>("Capacity"));
         columnPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
         columnFeatures.setCellValueFactory(new PropertyValueFactory<>("Features"));
-
         columnTotalRooms.setCellValueFactory(new PropertyValueFactory<>("TotalRooms"));
         columnAvailableRooms.setCellValueFactory(new PropertyValueFactory<>("AvailableRooms"));
         List<Room> rooms = DBUtils.getAllRooms();

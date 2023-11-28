@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-
 public class NewReservationController implements Initializable {
     @FXML
     private TextField roomNameTextField;
@@ -85,6 +84,7 @@ public class NewReservationController implements Initializable {
         buttonAllReservations.setOnAction(e -> ScreenManager.showAllReservations());
         reservationsServicesButton.setOnAction(e -> ScreenManager.showReservationsServicesPage());
     }
+
     private Room findRoomByName(String roomName) {
         List<Room> allRooms = DBUtils.getAllRooms();
         for (Room room : allRooms) {
@@ -94,6 +94,7 @@ public class NewReservationController implements Initializable {
         }
         return null;
     }
+
     private Customers findCustomerById(int customerId) {
         List<Customers> allCustomers = DBUtils.getAllCustomers();
         for (Customers customer : allCustomers) {
@@ -103,12 +104,14 @@ public class NewReservationController implements Initializable {
         }
         return null;
     }
+
     public void populateRoomAndCustomerComboBoxes() {
         roomComboBox.setConverter(new StringConverter<Room>() {
             @Override
             public String toString(Room room) {
                 return room != null ? room.getRoomName() : null;
             }
+
             @Override
             public Room fromString(String string) {
                 if (string != null && !string.isEmpty()) {
@@ -131,6 +134,7 @@ public class NewReservationController implements Initializable {
                 }
                 return null;
             }
+
             @Override
             public Customers fromString(String string) {
                 return null;
@@ -152,7 +156,6 @@ public class NewReservationController implements Initializable {
 
     @FXML
     private void handleNewReservationButtonClick(ActionEvent buttonSave) {
-
         String customerIdString = customerNameTextField.getText();
         int customerId;
         if (customerIdString.contains(":")) {
@@ -167,14 +170,15 @@ public class NewReservationController implements Initializable {
         LocalDate checkOutDateValue = checkOutDatePicker.getValue();
         LocalDate checkedInDateValue = checkedInPicker.getValue();
         LocalDate checkedOutDateValue = checkedOutPicker.getValue();
+        if (!DBUtils.validateDates(checkInDateValue, checkOutDateValue, checkedInDateValue, checkedOutDateValue)) {
+            DBUtils.showErrorAlert("Error", "Wrong Date", "The departure date cannot be selected before the entry date.");
+            return;
+        }
         ReservationsController.updateCheckedOutDate(selectedRoom.getRoomId());
         int currentAvailableRooms = selectedRoom.getAvailableRooms();
-
         Reservations newReservation = new Reservations(selectedRoom, checkInDateValue, checkOutDateValue, checkedInDateValue, checkedOutDateValue, customerId);
         DBUtils.addNewReservation(newReservation);
         selectedRoom.reserveRoom();
         DBUtils.updateRoomAvailableRooms(selectedRoom.getRoomId(), currentAvailableRooms - 1);
-
     }
 }
-

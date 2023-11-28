@@ -22,10 +22,12 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        ScreenManager.closeOpenStages();
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-screen.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 800, 550);
-        stage.setTitle("Reservations");
+        stage.setTitle("Reservations");  openStages.add(stage);
         stage.setScene(scene);
 
 

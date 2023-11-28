@@ -44,7 +44,7 @@ public class DeleteReservationsServicesController implements Initializable {
     private ComboBox<Integer> reservationServiceIdComboBox;
     @FXML
     private Button accommodationInvoiceButton;
-    //
+
 
     public void initialize() {
         buttonRooms.setOnAction(e -> ScreenManager.showRoomsPage());

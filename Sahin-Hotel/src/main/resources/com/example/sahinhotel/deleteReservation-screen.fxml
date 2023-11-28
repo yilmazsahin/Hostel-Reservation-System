@@ -8,9 +8,9 @@
 
 <AnchorPane prefHeight="454.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sahinhotel.DeletedItemsPages.DeleteReservationController">
     <children>
-        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #a5d8fc;">
+        <HBox prefHeight="29.0" prefWidth="801.0" style="-fx-background-color: #4f0184;">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="SAHIN HOSTEL">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="169.0" text="UPoD  HOTEL" textFill="WHITE">
                     <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                     </font>
@@ -32,7 +32,7 @@
                 <Label prefHeight="28.0" prefWidth="173.0" text="Filter By Reservation ID : " />
                 <Label alignment="CENTER" prefHeight="26.0" prefWidth="80.0" text="Search" />
                 <TextField fx:id="tf_searchingByReservationId" prefHeight="25.0" prefWidth="149.0" />
-                <ComboBox fx:id="reservationsComboBox">
+                <ComboBox fx:id="reservationsComboBox" prefHeight="25.0" prefWidth="58.0">
                     <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                     </cursor>
@@ -76,12 +76,12 @@
             </font>
         </Button>
         <Button fx:id="accommodationInvoiceButton" layoutX="509.0" layoutY="408.0" mnemonicParsing="false" prefHeight="37.0" text="ACCOMMODATION INVOICE" />
-        <HBox alignment="CENTER" layoutX="22.0" layoutY="171.0" prefHeight="45.0" prefWidth="451.0">
+        <HBox alignment="CENTER" layoutX="22.0" layoutY="171.0" prefHeight="45.0" prefWidth="570.0">
             <children>
                 <Label prefHeight="28.0" prefWidth="173.0" text="Filter By Customer Name : " />
                 <Label alignment="CENTER" prefHeight="26.0" prefWidth="80.0" text="Search" />
                 <TextField fx:id="tf_searchingByCustomerName" prefHeight="25.0" prefWidth="149.0" />
-                <ComboBox fx:id="customersComboBox">
+                <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="175.0">
                     <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                     </cursor>

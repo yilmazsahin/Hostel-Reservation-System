@@ -1,7 +1,6 @@
 package com.example.sahinhotel.EditItemsPages;
 
 import com.example.sahinhotel.*;
-import com.example.sahinhotel.RoomTypes.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +20,6 @@ import java.util.ResourceBundle;
  */
 
 public class EditReservationController implements Initializable {
-
     @FXML
     TextField tf_searchingByReservationId;
     @FXML
@@ -32,6 +30,7 @@ public class EditReservationController implements Initializable {
     private TextField customerNameTextField;
     @FXML
     public ComboBox<Customers> customersComboBox;
+    public ComboBox<Integer> reservationIdComboBox;
     @FXML
     private DatePicker checkInDatePicker;
     @FXML
@@ -44,7 +43,6 @@ public class EditReservationController implements Initializable {
     private Button buttonRooms;
     @FXML
     private Button buttonFeatures;
-
     @FXML
     private Button buttonServices;
     @FXML
@@ -62,8 +60,6 @@ public class EditReservationController implements Initializable {
     @FXML
     private Button accommodationInvoiceButton;
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         populateRoomAndCustomerComboBoxes();
@@ -71,6 +67,7 @@ public class EditReservationController implements Initializable {
 
     public void initialize() {
         populateRoomAndCustomerComboBoxes();
+        populateReservationIdComboBox();
         roomNameTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             Room selectedRoom = findRoomByName(newValue);
             roomComboBox.setValue(selectedRoom);
@@ -80,15 +77,12 @@ public class EditReservationController implements Initializable {
             if (customerText != null && customerText.matches("\\\\d+:\\\\s*[\\\\p{L}]+\\\\s+[\\\\p{L}]+")) {
                 String[] parts = customerText.split(":");
                 int customerId = Integer.parseInt(parts[0].trim());
-
                 Customers selectedCustomer = findCustomerById(customerId);
                 if (selectedCustomer != null) {
                     customersComboBox.setValue(selectedCustomer);
                 }
             }
         });
-
-
         buttonRooms.setOnAction(e -> ScreenManager.showRoomsPage());
         buttonFeatures.setOnAction(e -> ScreenManager.showFeaturesPage());
         buttonCustomers.setOnAction(e -> ScreenManager.showCustomersPage());
@@ -177,8 +171,10 @@ public class EditReservationController implements Initializable {
         LocalDate checkedInDateValue = checkedInPicker.getValue();
         LocalDate checkedOutDateValue = checkedOutPicker.getValue();
         String customerInfo = customerNameTextField.getText();
-
-
+        if (!DBUtils.validateDates(checkInDateValue, checkOutDateValue, checkedInDateValue, checkedOutDateValue)) {
+            DBUtils.showErrorAlert("Error", "Invalid Dates", "Please check the selected dates.");
+            return;
+        }
         int customerId;
         String fullName;
         if (customerInfo != null && customerInfo.matches("\\d+:\\s*[\\p{L}]+\\s+[\\p{L}]+")) {
@@ -201,8 +197,11 @@ public class EditReservationController implements Initializable {
             existingReservation.setCustomerId(customerId);
 
             boolean success = updateReservation(existingReservation);
+            int currentAvailableRooms = selectedRoom.getAvailableRooms();
+            DBUtils.updateRoomAvailableRooms(selectedRoom.getRoomId(), currentAvailableRooms - 1);
             if (success) {
                 DBUtils.showErrorAlert("Success", "Reservation Updated", "Reservation has been successfully updated.");
+
             } else {
                 DBUtils.showErrorAlert("Error", "Update Failed", "Failed to update the reservation. Please try again.");
             }
@@ -219,7 +218,7 @@ public class EditReservationController implements Initializable {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y");
             String sql = "UPDATE reservations SET Room=?, CheckIn_Date=?, CheckOut_Date=?, Checked_In=?, Checked_Out=?, customer_id=? WHERE Id=?";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, existingReservation.getRoom().getRoomId());
+            preparedStatement.setString(1, existingReservation.getRoom().getRoomName());
             preparedStatement.setDate(2, Date.valueOf(existingReservation.getCheckInDate()));
             preparedStatement.setDate(3, Date.valueOf(existingReservation.getCheckOutDate()));
             preparedStatement.setDate(4, Date.valueOf(existingReservation.getCheckedIn()));
@@ -245,7 +244,6 @@ public class EditReservationController implements Initializable {
         return success;
     }
 
-
     public Reservations getReservationById(int reservationId) {
         Reservations reservation = null;
         Connection connection = null;
@@ -257,44 +255,11 @@ public class EditReservationController implements Initializable {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, reservationId);
             resultSet = preparedStatement.executeQuery();
-
-
             if (resultSet.next()) {
-
-
                 int id = resultSet.getInt("Id");
                 String roomName = resultSet.getString("Room");
+                Room room = findRoomByName(roomName);
                 int customer = resultSet.getInt("customer_id");
-                Room room;
-                switch (roomName) {
-                    case "Single Room":
-                        room = new SingleRoom();
-                        break;
-                    case "Double Room":
-                        room = new DoubleRoom();
-                        break;
-                    case "Accessible Room":
-                        room = new AccessibleRoom();
-                        break;
-                    case "Family Room":
-                        room = new FamilyRoom();
-                        break;
-                    case "Honeymoon Room":
-                        room = new HoneymoonRoom();
-                        break;
-                    case "Junior Suite":
-                        room = new JuniorSuite();
-                        break;
-                    case "King Suite":
-                        room = new KingSuite();
-                        break;
-                    case "Triple Room":
-                        room = new TripleRoom();
-                        break;
-                    default:
-                        room = new SingleRoom();
-                        break;
-                }
                 Customers customerId = new Customers(customer);
                 LocalDate checkInDate = resultSet.getDate("CheckIn_Date").toLocalDate();
                 LocalDate checkOutDate = resultSet.getDate("CheckOut_Date").toLocalDate();
@@ -322,10 +287,17 @@ public class EditReservationController implements Initializable {
         return reservation;
     }
 
+    private void populateReservationIdComboBox() {
+        ObservableList<Integer> reservationIdOptions = FXCollections.observableArrayList();
+        List<Reservations> allReservations = DBUtils.getAllReservations();
+        for (Reservations reservation : allReservations) {
+            reservationIdOptions.add(reservation.getId());
+        }
+        reservationIdComboBox.setItems(reservationIdOptions);
+    }
 
     private int getReservationIdFromUserInput() {
         String userInput = tf_searchingByReservationId.getText().trim();
-
         try {
             return Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
@@ -333,5 +305,4 @@ public class EditReservationController implements Initializable {
             return -1;
         }
     }
-
 }
