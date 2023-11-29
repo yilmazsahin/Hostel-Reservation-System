@@ -23,6 +23,11 @@ public class AccessibleRoom extends Room {
     protected void setTypeName() {
         this.typeName = getTypeName();
     }
+    @Override
+    public void releaseRoom() {
+
+        updateRoomAvailableRooms();
+    }
 
 
 

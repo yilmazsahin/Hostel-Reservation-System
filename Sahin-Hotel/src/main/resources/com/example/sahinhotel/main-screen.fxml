@@ -45,12 +45,12 @@
       </HBox>
       <TableView fx:id="reservationsTableView" layoutX="51.0" layoutY="174.0" prefHeight="305.0" prefWidth="734.0">
         <columns>
-          <TableColumn fx:id="columnId" prefWidth="41.0" text="ID" />
-          <TableColumn fx:id="columnRoom" prefWidth="79.0" text="Room" />
-            <TableColumn fx:id="columnCheckInDate" prefWidth="122.0" text="Check-In Date" />
-            <TableColumn fx:id="columnCheckOutDate" prefWidth="122.0" text="Check-Out Date" />
-            <TableColumn fx:id="columnCheckedIn" prefWidth="122.0" text="Checked-In " />
-            <TableColumn fx:id="columnCheckedOut" prefWidth="122.0" text="Checked-Out" />
+          <TableColumn fx:id="columnId" prefWidth="39.0" text="ID" />
+          <TableColumn fx:id="columnRoom" prefWidth="146.0" text="Room Name" />
+            <TableColumn fx:id="columnCheckInDate" prefWidth="105.0" text="Check-In Date" />
+            <TableColumn fx:id="columnCheckOutDate" prefWidth="105.0" text="Check-Out Date" />
+            <TableColumn fx:id="columnCheckedIn" prefWidth="105.0" text="Checked-In " />
+            <TableColumn fx:id="columnCheckedOut" prefWidth="105.0" text="Checked-Out" />
             <TableColumn fx:id="columnCustomers" prefWidth="125.0" text="Customer" />
         </columns>
       </TableView>

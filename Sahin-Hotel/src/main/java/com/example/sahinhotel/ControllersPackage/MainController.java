@@ -180,109 +180,6 @@ public class MainController implements Initializable {
         this.buttonCustomers = buttonCustomers;
     }
 
-    public TableView<Reservations> getReservationsTableView() {
-        return reservationsTableView;
-    }
-
-    public void setReservationsTableView(TableView<Reservations> reservationsTableView) {
-        this.reservationsTableView = reservationsTableView;
-    }
-
-    public ObservableList<Room> getRoomsList() {
-        return roomsList;
-    }
-
-    public void setRoomsList(ObservableList<Room> roomsList) {
-        this.roomsList = roomsList;
-    }
-
-    public ObservableList<Reservations> getReservationsList() {
-        return reservationsList;
-    }
-
-    public void setReservationsList(ObservableList<Reservations> reservationsList) {
-        this.reservationsList = reservationsList;
-    }
-
-    public ObservableList<Customers> getCustomersList() {
-        return customersList;
-    }
-
-    public void setCustomersList(ObservableList<Customers> customersList) {
-        this.customersList = customersList;
-    }
-
-    public ObservableList<Services> getServicesList() {
-        return servicesList;
-    }
-
-    public void setServicesList(ObservableList<Services> servicesList) {
-        this.servicesList = servicesList;
-    }
-
-    public ObservableList<Features> getFeaturesList() {
-        return featuresList;
-    }
-
-    public void setFeaturesList(ObservableList<Features> featuresList) {
-        this.featuresList = featuresList;
-    }
-
-    public TableColumn<Reservations, Integer> getColumnId() {
-        return columnId;
-    }
-
-    public void setColumnId(TableColumn<Reservations, Integer> columnId) {
-        this.columnId = columnId;
-    }
-
-    public TableColumn<Reservations, Integer> getColumnRoom() {
-        return columnRoom;
-    }
-
-    public void setColumnRoom(TableColumn<Reservations, Integer> columnRoom) {
-        this.columnRoom = columnRoom;
-    }
-
-    public TableColumn<Reservations, Date> getColumnCheckInDate() {
-        return columnCheckInDate;
-    }
-
-    public void setColumnCheckInDate(TableColumn<Reservations, Date> columnCheckInDate) {
-        this.columnCheckInDate = columnCheckInDate;
-    }
-
-    public TableColumn<Reservations, Date> getColumnCheckOutDate() {
-        return columnCheckOutDate;
-    }
-
-    public void setColumnCheckOutDate(TableColumn<Reservations, Date> columnCheckOutDate) {
-        this.columnCheckOutDate = columnCheckOutDate;
-    }
-
-    public TableColumn<Reservations, Date> getColumnCheckedIn() {
-        return columnCheckedIn;
-    }
-
-    public void setColumnCheckedIn(TableColumn<Reservations, Date> columnCheckedIn) {
-        this.columnCheckedIn = columnCheckedIn;
-    }
-
-    public TableColumn<Reservations, Date> getColumnCheckedOut() {
-        return columnCheckedOut;
-    }
-
-    public void setColumnCheckedOut(TableColumn<Reservations, Date> columnCheckedOut) {
-        this.columnCheckedOut = columnCheckedOut;
-    }
-
-    public TableColumn<Reservations, String> getColumnCustomers() {
-        return columnCustomers;
-    }
-
-    public void setColumnCustomers(TableColumn<Reservations, String> columnCustomers) {
-        this.columnCustomers = columnCustomers;
-    }
 
     public Button getButtonReservation() {
         return buttonReservation;
@@ -317,7 +214,7 @@ public class MainController implements Initializable {
         ObservableList<Reservations> observableReservations = FXCollections.observableArrayList(reservations);
         reservationsTableView.setItems(observableReservations);
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        columnRoom.setCellValueFactory(new PropertyValueFactory<>("room"));
+        columnRoom.setCellValueFactory(new PropertyValueFactory<>("Room"));
         columnCheckInDate.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
         columnCheckOutDate.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
         columnCheckedIn.setCellValueFactory(new PropertyValueFactory<>("checkedIn"));
@@ -366,7 +263,6 @@ public class MainController implements Initializable {
             List<Reservations> allReservations = DBUtils.getAllReservations();
             ObservableList<Reservations> observableAllReservations = FXCollections.observableArrayList(allReservations);
             reservationsTableView.setItems(observableAllReservations);
-
         }
     }
 
@@ -379,10 +275,7 @@ public class MainController implements Initializable {
             reservationsTableView.setItems(observableFilteredReservations);
         } else {
             DBUtils.showConfirmationAlert("Attention", "You have not entered the correct fields", "You are viewing all reservations.");
-
-        }
-    }
-
+        }}
     private List<Reservations> getReservationsByCheckedInDate(LocalDate fromDate, LocalDate toDate) {
         List<Reservations> allReservations = DBUtils.getAllReservations();
         List<Reservations> filteredReservations = new ArrayList<>();
@@ -391,10 +284,7 @@ public class MainController implements Initializable {
             LocalDate checkedOutDate = reservation.getCheckedOut();
             if (checkedInDate != null && checkedOutDate != null && !checkedOutDate.isBefore(fromDate) && !checkedInDate.isAfter(toDate)) {
                 filteredReservations.add(reservation);
-            }
-        }
-        return filteredReservations;
-    }
+            }}return filteredReservations;}
 
     public void handleSearchReservationsByNameButtonClick(ActionEvent event) {
         String customerName = tf_searchByName.getText();
@@ -423,9 +313,16 @@ public class MainController implements Initializable {
                     LocalDate checkInDate = resultSet.getDate("CheckIn_Date").toLocalDate();
                     LocalDate checkOutDate = resultSet.getDate("CheckOut_Date").toLocalDate();
                     int customerId = resultSet.getInt("customer_id");
-                    Room room = DBUtils.getRoomById(id);
+                    Room room = DBUtils.getRoomByName(roomName);
                     Reservations reservation = new Reservations(id, room, checkInDate, checkOutDate, checkedIn, checkedOut, customerId);
-                    reservations.add(reservation);}}} catch (SQLException e) {e.printStackTrace();}return reservations;}
+                    reservations.add(reservation);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return reservations;
+    }
 
     private String getCustomerIdByName(String customerName) {
         String customerId = null;
@@ -461,14 +358,11 @@ public class MainController implements Initializable {
                     LocalDate checkInDate = resultSet.getDate("CheckIn_Date").toLocalDate();
                     LocalDate checkOutDate = resultSet.getDate("CheckOut_Date").toLocalDate();
                     int customerId = resultSet.getInt("CustomerId");
-
                     Room room = DBUtils.getRoomById(roomId);
-
                     Reservations reservation = new Reservations(id, room, checkInDate, checkOutDate, checkedIn, checkedOut, customerId);
                     reservations.add(reservation);
                 }
             }
-
             return reservations;
 
         } catch (SQLException e) {

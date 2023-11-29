@@ -56,46 +56,106 @@
         </Button>
         <Button fx:id="accommodationInvoiceButton" layoutX="589.0" layoutY="467.0" mnemonicParsing="false" prefHeight="37.0" text="ACCOMMODATION INVOICE" />
 
-        <GridPane alignment="center" hgap="10" layoutX="14.0" layoutY="132.0" prefHeight="300.0" prefWidth="772.0" vgap="10">
+        <GridPane alignment="center" hgap="10" layoutY="132.0" prefHeight="300.0" prefWidth="800.0" vgap="10">
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
-            <Label prefHeight="39.0" prefWidth="120.0" text="Customer name:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="customerNameLabel" prefHeight="39.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label prefWidth="120.0" text="Room Name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="roomNameLabel" prefHeight="39.0" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label prefWidth="150.0" text="Number of Days Stayed" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label fx:id="stayedDaysLabel" prefHeight="39.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label fx:id="roomPriceLabel" prefHeight="17.0" prefWidth="120.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Label fx:id="roomsWageLabel" prefHeight="39.0" prefWidth="120.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <Label prefWidth="120.0" text="Room Price" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Label prefWidth="120.0" text="Total Room Payment" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Label prefHeight="39.0" prefWidth="160.0" text="Customer name:" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label fx:id="customerNameLabel" prefHeight="39.0" prefWidth="160.0" textFill="GREEN" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <font>
+               <Font size="18.0" />
+            </font></Label>
+            <Label prefWidth="160.0" text="Room Name" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label fx:id="roomNameLabel" prefHeight="39.0" prefWidth="160.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label prefWidth="160.0" text="Number of Days Stayed" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label fx:id="stayedDaysLabel" prefHeight="39.0" prefWidth="160.0" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label fx:id="roomPriceLabel" prefHeight="17.0" prefWidth="120.0" textFill="RED" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label fx:id="roomsWageLabel" prefHeight="39.0" prefWidth="160.0" textFill="RED" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label prefWidth="120.0" text="Room Price" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label prefWidth="160.0" text="Total Room Payment" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
 
-            <Label prefWidth="120.0" text="Service Name" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label prefWidth="120.0" text="Service Price" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label prefWidth="120.0" text="Quantity" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Label prefWidth="150.0" text="Total Service Payment" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <Label fx:id="serviceNameLabel" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label fx:id="servicePriceLabel" prefWidth="120.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Label fx:id="quantityLabel" prefWidth="120.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Label fx:id="totalServiceWageLabel" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-            <Label prefWidth="120.0" text="Total Amount:" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <Label fx:id="totalAmountLabel" prefWidth="120.0" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <Label prefWidth="160.0" text="Service Name" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label prefWidth="160.0" text="Service Price" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label prefWidth="120.0" text="Quantity" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label prefWidth="160.0" text="Total Service Payment" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label fx:id="serviceNameLabel" prefWidth="160.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label fx:id="servicePriceLabel" prefWidth="160.0" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="6">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label fx:id="quantityLabel" prefWidth="120.0" textFill="RED" GridPane.columnIndex="3" GridPane.rowIndex="6">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label fx:id="totalServiceWageLabel" prefWidth="160.0" textFill="RED" GridPane.columnIndex="4" GridPane.rowIndex="6">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+            <Label prefWidth="120.0" text="Total Amount:" GridPane.columnIndex="3" GridPane.rowIndex="7">
+            <font>
+               <Font size="16.0" />
+            </font></Label>
+            <Label fx:id="totalAmountLabel" prefWidth="160.0" textFill="RED" GridPane.columnIndex="4" GridPane.rowIndex="7">
+            <font>
+               <Font size="16.0" />
+            </font></Label>
 
 
             <columnConstraints>
+                <ColumnConstraints prefWidth="0.0" />
+                <ColumnConstraints prefWidth="140.0" />
+                <ColumnConstraints prefWidth="175.0" />
                 <ColumnConstraints prefWidth="120.0" />
-                <ColumnConstraints prefWidth="120.0" />
-                <ColumnConstraints prefWidth="150.0" />
-                <ColumnConstraints prefWidth="120.0" />
-                <ColumnConstraints prefWidth="150.0" />
-                <ColumnConstraints prefWidth="150.0" />
+                <ColumnConstraints prefWidth="164.0" />
+                <ColumnConstraints prefWidth="0.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints />
+                <RowConstraints prefHeight="40.0" />
                 <RowConstraints />
-                <RowConstraints />
-                <RowConstraints />
+                <RowConstraints prefHeight="50.0" />
                 <RowConstraints />
                 <RowConstraints />
                 <RowConstraints />

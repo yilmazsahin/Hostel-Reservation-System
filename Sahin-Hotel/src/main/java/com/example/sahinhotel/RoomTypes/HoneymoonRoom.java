@@ -17,21 +17,15 @@ public class HoneymoonRoom extends Room {
     }
 
     public HoneymoonRoom() {
-
     }
-
     @Override
     protected void setTypeName() {
         this.typeName = getTypeName();
     }
-
-
-
     @Override
     public String getTypeName() {
         return "Honeymoon Room";
     }
-
     @Override
     protected List<String> defineFeatures() {
         List<String> specificFeatures = new ArrayList<>();
@@ -45,13 +39,15 @@ public class HoneymoonRoom extends Room {
         return specificFeatures;
 
     }
-
     @Override
     protected Room createRoom(int roomId, String roomName, int capacity, double price, List<String> features, int totalRooms, int availableRooms) {
         HoneymoonRoom honeymoonRoom = new HoneymoonRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
         honeymoonRoom.setTypeName(roomName);
         return honeymoonRoom;
     }
+    @Override
+    public void releaseRoom() {
 
-
+        updateRoomAvailableRooms();
+    }
 }

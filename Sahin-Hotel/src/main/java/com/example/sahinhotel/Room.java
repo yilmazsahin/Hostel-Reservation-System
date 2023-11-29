@@ -1,5 +1,6 @@
 package com.example.sahinhotel;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,8 +37,6 @@ public abstract class Room {
     protected abstract Room createRoom(int roomId, String roomName, int capacity, double price, List<String> features, int totalRooms, int availableRooms);
 
     public static final List<String> commonFeatures = Arrays.asList("Wi-Fi", "TV", "Air Conditioning", "Mini Bar");
-
-
     public Room(int roomId, String roomName, int capacity, double price, List<String> features, int totalRooms, int availableRooms) {
         this.roomId = roomId;
         this.roomName = roomName;
@@ -48,19 +47,6 @@ public abstract class Room {
         this.availableRooms = availableRooms;
         this.typeName = roomName;
     }
-
-/*    public Room(String typeName,int roomId, String roomName, int capacity, double price, List<String> features, int totalRooms, int availableRooms) {
-        this.roomId = roomId;
-        this.roomName = roomName;
-        this.capacity = capacity;
-        this.price = price;
-        this.features = new ArrayList<>(features);
-        this.totalRooms = totalRooms;
-        this.availableRooms = availableRooms;
-        this.typeName = typeName;
-    }*/
-
-
     public String featuresToString() {
         return String.join(", ", features);
     }
@@ -79,31 +65,23 @@ public abstract class Room {
 
     public Room() {
     }
-
-
     public int getRoomId() {
         return roomId;
     }
-
-
     public Room(String typeName, int totalRooms) {
     this.typeName = typeName;
         this.totalRooms = totalRooms;
         this.availableRooms = totalRooms;
     }
-
-    public Room(int roomId, String roomName, int capacity, double price, int totalRooms) {
+    public Room(int roomId, String roomName, int capacity, double price, int totalRooms,int availableRooms) {
         this.roomId = roomId;
         this.roomName = roomName;
         this.capacity = capacity;
         this.price = price;
         this.features = new ArrayList<>();
         this.totalRooms = totalRooms;
-        this.availableRooms = totalRooms;
+        this.availableRooms = availableRooms;
     }
-
-
-
     public int getTotalRooms() {
         return totalRooms;
     }
@@ -118,9 +96,32 @@ public abstract class Room {
         }
     }
 
-    public void releaseRoom() {
-        if (availableRooms < totalRooms) {
+    public void setAvailableRooms(int availableRooms) {
+        this.availableRooms = availableRooms;
+    }
+
+    public  final void performReleaseRoom(){
+
+       updateRoomAvailableRooms();
+    };
+    public abstract void releaseRoom();
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
+    public void updateRoomAvailableRooms()  {
+        if (availableRooms >= 0 && availableRooms <= totalRooms) {
             availableRooms++;
+        } else {
+            System.out.println("Error: Available rooms cannot exceed total rooms.");
+        }
+    }
+    public void increaseAvailableRooms(int increment) {
+        if (availableRooms + increment <= totalRooms) {
+            availableRooms += increment;
+        } else {
+            System.out.println("Error: Available rooms cannot exceed total rooms.");
         }
     }
 

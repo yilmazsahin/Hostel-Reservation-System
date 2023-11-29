@@ -12,7 +12,7 @@ import java.util.List;
 public class DoubleRoom extends Room {
 
     public DoubleRoom(int roomId, String roomName, int capacity, double price,  List<String> features,int totalRooms,int availableRooms) {
-        super(roomId, roomName, capacity, price, totalRooms);
+        super(roomId, roomName, capacity, price, totalRooms,availableRooms);
         this.setFeatures(defineFeatures());
     }
 
@@ -24,7 +24,11 @@ public class DoubleRoom extends Room {
         this.typeName = getTypeName();
     }
 
+    @Override
+    public void releaseRoom() {
 
+        updateRoomAvailableRooms();
+    }
 
     @Override
     protected List<String> defineFeatures() {

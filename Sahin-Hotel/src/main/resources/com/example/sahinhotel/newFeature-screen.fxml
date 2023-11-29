@@ -44,7 +44,7 @@
             <Label contentDisplay="CENTER" layoutX="37.0" layoutY="74.0" prefHeight="17.0" prefWidth="136.0" text="Add New Feature : " />
             <TextField fx:id="newFeatureTextField" layoutX="180.0" layoutY="70.0" />
         </HBox>
-      <Button fx:id="saveNewFeatureButton" layoutX="308.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleNewFeatureButtonClick" text="Save New Feature" />
+      <Button fx:id="saveNewFeatureButton" layoutX="308.0" layoutY="142.0" mnemonicParsing="false"  text="Save New Feature" />
 
     </children>
 

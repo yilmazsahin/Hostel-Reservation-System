@@ -100,7 +100,7 @@ public class EditRoomController implements Initializable {
             int availableRooms = Integer.parseInt(availableRoomsTF);
             List<String> featuresList = getFeaturesFromTextField(roomFeaturesTextField);
 
-            Room room = getRoomByName(roomName);
+            Room room = DBUtils.getRoomByName(roomName);
             if (room != null) {
                 updateRoom(room, newRoomName, capacity, price, featuresList, totalRooms, availableRooms);
                 setRoomFields(room);
@@ -165,59 +165,7 @@ public class EditRoomController implements Initializable {
         }
     }
 
-    private Room getRoomByName(String roomType) {
-        Room room = null;
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y")) {
-            String sql = "SELECT * FROM rooms WHERE RoomName = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setString(1, roomType);
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        int roomId = resultSet.getInt("RoomId");
-                        String roomName = resultSet.getString("RoomName");
-                        int capacity = resultSet.getInt("Capacity");
-                        double price = resultSet.getDouble("Price");
-                        int totalRooms = resultSet.getInt("TotalRooms");
-                        int availableRooms = resultSet.getInt("AvailableRooms");
-                        List<String> features = DBUtils.getRoomFeaturesById(roomId);
-                        switch (roomType) {
-                            case "Single Room":
-                                room = new SingleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
-                                break;
-                            case "Double Room":
-                                room = new DoubleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
-                                break;
-                            case "Junior Suite":
-                                room = new JuniorSuite(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
-                                break;
-                            case "Triple Room":
-                                room = new TripleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
-                                break;
-                            case "King Suite":
-                                room = new KingSuite(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
-                                break;
-                            case "Honeymoon Room":
-                                room = new HoneymoonRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
-                                break;
-                            case "Family Room":
-                                room = new FamilyRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
-                                break;
-                            case "Accessible Room":
-                                room = new AccessibleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
-                                break;
-                            default:
-                                room = new SingleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
-                                break;
-                        }
-                        room = new SingleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return room;
-    }
+
 
     public static List<String> getFeaturesFromTextField(TextField textField) {
         String rawText = textField.getText();

@@ -61,7 +61,6 @@ public class NewCustomerController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     public void handleNewCustomerButtonClick(ActionEvent event) {
@@ -83,7 +82,6 @@ public class NewCustomerController implements Initializable {
                 preparedStatement.setString(3, phoneNumber);
                 preparedStatement.setString(4, birthDate);
                 preparedStatement.setString(5, description);
-
                 int rowsAffected = preparedStatement.executeUpdate();
                 if (rowsAffected > 0) {
                     System.out.println("New customer saved successfully.");

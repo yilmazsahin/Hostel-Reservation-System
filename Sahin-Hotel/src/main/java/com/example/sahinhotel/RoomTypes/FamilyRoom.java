@@ -43,6 +43,11 @@ public class FamilyRoom extends Room {
         return familyRoom;
     }
     @Override
+    public void releaseRoom() {
+
+        updateRoomAvailableRooms();
+    }
+    @Override
     public String getTypeName() {
         return "Family Room";
     }

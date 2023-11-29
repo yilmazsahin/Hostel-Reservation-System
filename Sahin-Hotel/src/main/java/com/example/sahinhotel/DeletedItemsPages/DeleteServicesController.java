@@ -36,8 +36,6 @@ public class DeleteServicesController implements Initializable {
     @FXML
     private Button reservationsServicesButton;
     @FXML
-    private TextField tf_searching;
-    @FXML
     private Button buttonNewService;
     @FXML
     private Button buttonEditService;
@@ -65,7 +63,6 @@ public class DeleteServicesController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> serviceNames = getAllServiceNames();
         servicesComboBox.setItems(serviceNames);
-
     }
 
 
@@ -75,7 +72,6 @@ public class DeleteServicesController implements Initializable {
         DBUtils.showConfirmationAlert("Success", "Service Deleted", "Service has been successfully deleted.");
         ObservableList<String> updatedServiceNames = getAllServiceNames();
         servicesComboBox.setItems(updatedServiceNames);
-
     }
 
     private void deleteService(String serviceName) {

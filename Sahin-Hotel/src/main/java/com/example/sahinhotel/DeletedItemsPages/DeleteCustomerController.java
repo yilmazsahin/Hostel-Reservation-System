@@ -33,14 +33,11 @@ public class DeleteCustomerController implements Initializable {
     @FXML
     private Button reservationsServicesButton;
     @FXML
-    private TextField txt_searching;
-    @FXML
     private Button buttonNewCustomer;
     @FXML
     private Button buttonEditCustomer;
     @FXML
     private Button buttonDeleteCustomer;
-
     @FXML
     private ComboBox<String> customersComboBox;
     @FXML
@@ -65,7 +62,6 @@ public class DeleteCustomerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     public void handleDeleteCustomerButtonClick(ActionEvent event) {

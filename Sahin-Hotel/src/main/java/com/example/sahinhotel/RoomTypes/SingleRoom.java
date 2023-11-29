@@ -20,7 +20,10 @@ public class SingleRoom extends Room {
         specificFeatures.addAll(commonFeatures);
         return specificFeatures;
     }
-
+    @Override
+    public void releaseRoom() {
+        updateRoomAvailableRooms();
+    }
     @Override
     protected String getTypeName() {
         return "Single Room";

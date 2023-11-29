@@ -33,8 +33,6 @@ public class DeleteRoomController implements Initializable {
     private Button reservationsServicesButton;
     @FXML
     private ComboBox<String> roomNameComboBox;
-
-
     @FXML
     private Button buttonNewRoom;
     @FXML
@@ -60,7 +58,6 @@ public class DeleteRoomController implements Initializable {
     }
 
     private void initializeComboBox() {
-
         ObservableList<String> roomNames = getAllRoomNames();
         roomNameComboBox.setItems(roomNames);
     }

@@ -3,7 +3,6 @@ package com.example.sahinhotel;
 import com.example.sahinhotel.RoomTypes.*;
 import javafx.scene.control.Alert;
 
-import javax.xml.xpath.XPathEvaluationResult;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
@@ -192,7 +191,6 @@ public class DBUtils {
                 String featuresString = resultSet.getString("Features");
                 int totalRooms = resultSet.getInt("TotalRooms");
                 int availableRooms = resultSet.getInt("AvailableRooms");
-                String typeName = resultSet.getString("RoomName");
                 List<String> features = Arrays.asList(featuresString.split(","));
                 Room room = createRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
                 return room;
@@ -200,8 +198,61 @@ public class DBUtils {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        showConfirmationAlert("Not found", "No room found with this ID.", "There is not any reservations in the database,Please try another ID.");
+      showConfirmationAlert("Not found", "No room found with this ID.", "There is not any reservations in the database,Please try another ID.");
         return null;
+    }
+    public static Room getRoomByName(String roomType) {
+        Room room = null;
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y")) {
+            String sql = "SELECT * FROM rooms WHERE RoomName = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, roomType);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        int roomId = resultSet.getInt("RoomId");
+                        String roomName = resultSet.getString("RoomName");
+                        int capacity = resultSet.getInt("Capacity");
+                        double price = resultSet.getDouble("Price");
+                        int totalRooms = resultSet.getInt("TotalRooms");
+                        int availableRooms = resultSet.getInt("AvailableRooms");
+                        List<String> features = DBUtils.getRoomFeaturesById(roomId);
+                        switch (roomType) {
+                            case "Single Room":
+                                room = new SingleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
+                                break;
+                            case "Double Room":
+                                room = new DoubleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
+                                break;
+                            case "Junior Suite":
+                                room = new JuniorSuite(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
+                                break;
+                            case "Triple Room":
+                                room = new TripleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
+                                break;
+                            case "King Suite":
+                                room = new KingSuite(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
+                                break;
+                            case "Honeymoon Room":
+                                room = new HoneymoonRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
+                                break;
+                            case "Family Room":
+                                room = new FamilyRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
+                                break;
+                            case "Accessible Room":
+                                room = new AccessibleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
+                                break;
+                            default:
+                                room = new SingleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
+                                break;
+                        }
+                        room = new SingleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return room;
     }
 
     public static List<Features> getAllFeatures() {
@@ -284,24 +335,6 @@ public class DBUtils {
         }
     }
 
-    public static boolean deleteReservationById(int reservationId) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y");
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM reservations WHERE Id = ?")) {
-
-            statement.setInt(1, reservationId);
-            deleteReservationServicesByReservationId(reservationId);
-            int affectedRows = statement.executeUpdate();
-            showConfirmationAlert("Success", "Reservation  deleted.", "Reservation has been successfully deleted.");
-
-            return affectedRows > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-            showErrorAlert("Unsuccessful", "Reservation  couldn't deleted.", "Reservation  hasn't been successfully deleted.Please try again.");
-            return false;
-        }
-    }
 
 
     public static List<Customers> getCustomersWithReservations() {
@@ -309,7 +342,6 @@ public class DBUtils {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y");
             String sql = "SELECT DISTINCT c.* FROM customers c INNER JOIN reservations r ON c.customerId = r.customer_id";
@@ -342,7 +374,6 @@ public class DBUtils {
 
         return customersWithReservations;
     }
-
 
     public static String getCustomerNameById(int customerId) {
         String customerName = null;
@@ -405,6 +436,10 @@ public class DBUtils {
     }
 
     public static void updateRoomAvailableRooms(int roomId, int newAvailableRooms) {
+        if (roomId <= 0) {
+            System.out.println("Error: Invalid Room ID.");
+            return;
+        }
         String sql = "UPDATE rooms SET AvailableRooms = ? WHERE RoomId = ?";
 
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y");
@@ -415,8 +450,12 @@ public class DBUtils {
 
             int affectedRows = statement.executeUpdate();
 
-            if (affectedRows == 0) {
+            if (affectedRows > 0) {
+                System.out.println("Room update successful.");
+            } else {
                 System.out.println("Room update failed, no rows affected.");
+                System.out.println("Room ID: " + roomId);
+                System.out.println("New Available Rooms: " + newAvailableRooms);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -460,6 +499,7 @@ public class DBUtils {
         }
         return features;
     }
+
     public static boolean validateDates(LocalDate checkInDate, LocalDate checkOutDate, LocalDate checkedInDate, LocalDate checkedOutDate) {
         if (checkInDate == null || checkOutDate == null || checkedInDate == null || checkedOutDate == null) {
             DBUtils.showErrorAlert("Error", "Missing Dates", "Please fill in all date fields.");

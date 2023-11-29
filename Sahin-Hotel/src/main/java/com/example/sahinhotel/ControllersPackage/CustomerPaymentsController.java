@@ -166,11 +166,8 @@ public class CustomerPaymentsController implements Initializable {
                     model.setStayedDays(calculateStayedDays(reservationResult.getDate("Checked_In").toLocalDate(), reservationResult.getDate("Checked_Out").toLocalDate()));
                     model.setRoomPrice(reservationResult.getDouble("Price"));
                     model.setTotalRoomWage(model.getStayedDays() * model.getRoomPrice());
-
                     updateLabels();
-
                     List<ServiceDetail> serviceDetailsList = model.getServiceDetailsList(reservationIdComboBox.getValue());
-
                     serviceDetailsList.clear();
                     String serviceQuery = "SELECT * FROM reservations_services WHERE ReservationId = ?";
                     try (PreparedStatement serviceStatement = connection.prepareStatement(serviceQuery)) {
@@ -199,7 +196,6 @@ public class CustomerPaymentsController implements Initializable {
             DBUtils.showErrorAlert("Error", "Failed to fetch reservation details", "Failed to fetch reservation details from the database.");
         }
     }
-
     private void updateLabels() {
         customerNameLabel.setText(model.getCustomerName());
         roomNameLabel.setText(model.getRoomName());

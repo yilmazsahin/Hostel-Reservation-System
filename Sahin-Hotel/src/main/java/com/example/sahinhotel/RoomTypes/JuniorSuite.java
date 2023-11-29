@@ -47,5 +47,11 @@ public class JuniorSuite extends Room {
     protected String getTypeName() {
         return "Junior room";
     }
+    @Override
+    public void releaseRoom() {
+
+
+        updateRoomAvailableRooms();
+    }
 
 }

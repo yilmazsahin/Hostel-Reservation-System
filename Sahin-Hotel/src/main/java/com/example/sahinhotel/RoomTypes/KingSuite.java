@@ -48,6 +48,11 @@ public class KingSuite extends Room {
         return kingSuite;
     }
     @Override
+    public void releaseRoom() {
+
+        updateRoomAvailableRooms();
+    }
+    @Override
     protected String getTypeName() {
         return "King Suite";
     }

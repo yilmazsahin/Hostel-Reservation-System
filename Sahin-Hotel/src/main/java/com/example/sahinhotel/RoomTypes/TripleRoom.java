@@ -26,11 +26,11 @@ public class TripleRoom extends Room {
     }
 
 
-
     @Override
     protected String getTypeName() {
         return "Triple Room";
     }
+
     @Override
     protected List<String> defineFeatures() {
         List<String> specificFeatures = new ArrayList<>();
@@ -39,10 +39,17 @@ public class TripleRoom extends Room {
         specificFeatures.addAll(commonFeatures);
         return specificFeatures;
     }
+
     @Override
     protected Room createRoom(int roomId, String roomName, int capacity, double price, List<String> features, int totalRooms, int availableRooms) {
         TripleRoom tripleRoom = new TripleRoom(roomId, roomName, capacity, price, features, totalRooms, availableRooms);
         tripleRoom.setTypeName(roomName);
         return tripleRoom;
+    }
+
+    @Override
+    public void releaseRoom() {
+
+        updateRoomAvailableRooms();
     }
 }

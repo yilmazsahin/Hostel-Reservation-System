@@ -61,12 +61,10 @@ public class NewFeatureController implements Initializable {
 
     private void handleSaveNewFeatureButtonClick(ActionEvent event) {
         String newFeatureName = newFeatureTextField.getText();
-
         if (!newFeatureName.isEmpty()) {
             saveNewFeatureToDatabase(newFeatureName);
             clearFields();
         } else {
-
             DBUtils.showErrorAlert("Error", "Invalid Input", "Please enter a valid feature name.");
         }
     }
@@ -93,6 +91,4 @@ public class NewFeatureController implements Initializable {
         newFeatureTextField.clear();
     }
 
-    public void handleNewFeatureButtonClick(ActionEvent event) {
-    }
 }

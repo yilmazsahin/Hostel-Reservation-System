@@ -69,7 +69,6 @@ public class DeleteReservationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         populateReservationsAndCustomersComboBoxes();
-
     }
 
     public void handleDeleteReservationButtonClick() {
@@ -83,10 +82,13 @@ public class DeleteReservationController implements Initializable {
                 if (reservationToDeleteById != null) {
                     boolean deleteConfirmation = showDeleteConfirmationAlert();
                     if (deleteConfirmation) {
-                        boolean success = DBUtils.deleteReservationById(id);
+                        boolean success = deleteReservationById(id);
                         if (success) {
+                            Room room = reservationToDeleteById.getRoom();
+                            room.releaseRoom();
+                            DBUtils.updateRoomAvailableRooms(room.getRoomId(), 1);
                             DBUtils.showErrorAlert("Success", "Reservation Deleted", "Reservation has been successfully deleted.");
-                            DBUtils.updateRoomAvailableRooms(reservationToDeleteById.getRoom().getRoomId(), 1);
+
                         } else {
                             DBUtils.showErrorAlert("Error", "Deletion Failed", "Failed to delete the reservation. Please try again.");
                         }
@@ -114,6 +116,23 @@ public class DeleteReservationController implements Initializable {
             } else {
                 DBUtils.showErrorAlert("Error", "Reservation Not Found", "Reservation with ID " + customerName + " was not found.");
             }
+        }
+    }
+    public static boolean deleteReservationById(int reservationId) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_sahin", "root", "Y1lmaz090909y");
+             PreparedStatement statement = connection.prepareStatement("DELETE FROM reservations WHERE Id = ?")) {
+
+            statement.setInt(1, reservationId);
+            DBUtils.deleteReservationServicesByReservationId(reservationId);
+            int affectedRows = statement.executeUpdate();
+            DBUtils.showConfirmationAlert("Success", "Reservation  deleted.", "Reservation has been successfully deleted.");
+            return affectedRows > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            DBUtils.showErrorAlert("Unsuccessful", "Reservation  couldn't deleted.", "Reservation  hasn't been successfully deleted.Please try again.");
+            return false;
         }
     }
     public Reservations getReservationByCustomerName(String customerName) {
